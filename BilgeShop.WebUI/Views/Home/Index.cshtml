@@ -1,0 +1,21 @@
+﻿<div class="p-5 bg-body-tertiary rounded-3" >
+    <h1 class="text-body-emphasis fw-bold display-5">Alışveriş Sitesi</h1>
+    <p class="lead text-danger fw-bold fs-4 ms-5">
+		Güvenli Alışverişin Tek Adresi
+    </p>
+</div>
+
+
+<div class="row">
+
+    <div class="col-3">
+        <vc:categories></vc:categories>  @* ViewComponents vc nin açılımı *@
+
+    </div>
+    <div class="col-9">
+        @* TODO : Ürün Kartları gösterilecek *@
+
+        <vc:products category-id="@ViewBag.CategoryId"></vc:products>
+    
+    </div>
+</div>

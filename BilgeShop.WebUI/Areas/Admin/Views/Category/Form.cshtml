@@ -1,0 +1,61 @@
+﻿@model CategoryFormViewModel
+
+
+
+
+<div class="row">
+
+	<div class="col-8 offset-2">
+
+		<div class="card" style="border: solid 2px">
+
+			<div class="card-header fw-bold fs-5">
+
+				@if (Model.Id == 0)				{
+					
+					<span> Kategory Ekleme Formu</span>
+				}
+				else
+				{					
+					<span> Kategory Güncelleme Formu</span>			
+				
+				}
+
+			</div>
+			<div class="card-body">
+
+				@if (!string.IsNullOrWhiteSpace(ViewBag.ErrorMessage))
+				{
+					<div class="alert alert-danger fw-bold">
+						@ViewBag.ErrorMessage
+
+					</div>				
+				}
+
+				<form method="post" asp-controller="Category" asp-action="Save"> @* method post yazınca form olarak gider *@
+
+					<input asp-for="Id" type="hidden" />
+					@* TODO : Id Kontrol için | sonradan gizlenecek *@
+
+
+					<div class="mb-2">
+					<label asp-for="Name"></label>
+					<input type="text" asp-for="Name" class="form-control" />
+					<span class="text-danger fw-bold mt-1" asp-validation-for="Name"></span>
+					</div>
+
+					<div class="mb-2">
+						<label asp-for="Description"></label>
+						<input type="text" asp-for="Description" class="form-control" />
+						<span class="text-danger fw-bold mt-1" asp-validation-for="Description"></span>
+					</div>
+
+
+					<button class="btn btn-success mt-3 float-end">@(Model.Id == 0 ?"Kategori Ekle" :"Kategori Güncelle") </button>
+
+				</form>
+
+			</div>
+		</div>
+	</div>
+</div>
